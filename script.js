@@ -1,27 +1,19 @@
-document.getElementById("demo").innerHTML = "hello world";
+document.getElementById("demo").innerHTML = "hello clouds";
 
 var small = document.getElementById("small");
 var big = document.getElementById("big");
 var w = window.innerWidth;
-var pos = 0;
-var posB = -60;
-var id = setInterval(smallInterval, 50);
-var bI = setInterval (bigInterval, 40);
 
-function smallInterval() {
-	if (pos > w) {
-		pos = -50;
-	} else {
-		pos++;
-		small.style.right = pos + "px";
-	}
+function movement(cloud, frame, beginpos, w) {
+	setInterval(function(){
+			if (beginpos > w) {
+				beginpos = -60;
+			} else {
+				beginpos++;
+			cloud.style.right = beginpos + "px";
+		}
+	}, frame)
 }
 
-function bigInterval() {
-	if (posB > w) {
-		posB = -60;
-	} else {
-		posB++;
-		big.style.right = posB + "px";
-	}
-}
+movement(small, 50, 0, w);
+movement(big, 40, -60, w);
